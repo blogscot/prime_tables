@@ -27,4 +27,14 @@ defmodule PrimeTablesTest do
     assert PrimeTables.find_primes(30) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
   end
 
+  test "multiplication table for integer six" do
+    expected = """
+|      |    2 |    3 |    5 |
+|    2 |    4 |    6 |   10 |
+|    3 |    6 |    9 |   15 |
+|    5 |   10 |   15 |   25 |
+"""
+
+    assert expected == PrimeTables.get_table(6)
+  end
 end
