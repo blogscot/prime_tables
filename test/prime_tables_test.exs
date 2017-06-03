@@ -22,4 +22,9 @@ defmodule PrimeTablesTest do
     assert PrimeTables.is_prime?(23)
   end
 
+  test "find prime numbers up to the given value" do
+    assert PrimeTables.find_primes(10) == [2, 3, 5, 7]
+    assert PrimeTables.find_primes(30) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+  end
+
 end
