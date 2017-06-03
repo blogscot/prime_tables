@@ -3,7 +3,7 @@ defmodule PrimeTablesTest do
   doctest PrimeTables
 
   test "get a valid number" do
-    assert PrimeTables.get_number("test/valid_number.txt") == {:ok, 20}
+    assert PrimeTables.get_number("test/valid_number.txt") == {:ok, 8}
   end
 
   test "get a number from missing file" do
@@ -23,18 +23,18 @@ defmodule PrimeTablesTest do
   end
 
   test "find prime numbers up to the given value" do
-    assert PrimeTables.find_primes(10) == [2, 3, 5, 7]
-    assert PrimeTables.find_primes(30) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+    assert PrimeTables.get_primes(4) == [2, 3, 5, 7]
+    assert PrimeTables.get_primes(10) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
   end
 
-  test "multiplication table for integer six" do
+  test "multiplication table for three primes" do
     expected = """
 |      |    2 |    3 |    5 |
 |    2 |    4 |    6 |   10 |
 |    3 |    6 |    9 |   15 |
 |    5 |   10 |   15 |   25 |
 """
-    assert expected == PrimeTables.get_table(6)
+    assert expected == PrimeTables.get_table(3)
   end
 
   test "multiplication table with increased tab spacing" do
@@ -45,10 +45,10 @@ defmodule PrimeTablesTest do
 |     5 |    10 |    15 |    25 |
 """
 
-    assert expected == PrimeTables.get_table(6, 6)
+    assert expected == PrimeTables.get_table(3, 6)
   end
 
-  test "multiplication table for integer ten" do
+  test "multiplication table for four primes" do
     expected = """
 |      |    2 |    3 |    5 |    7 |
 |    2 |    4 |    6 |   10 |   14 |
@@ -56,7 +56,7 @@ defmodule PrimeTablesTest do
 |    5 |   10 |   15 |   25 |   35 |
 |    7 |   14 |   21 |   35 |   49 |
 """
-    assert expected == PrimeTables.get_table(10)
+    assert expected == PrimeTables.get_table(4)
   end
 
   test "from file input to text output" do
@@ -73,8 +73,7 @@ defmodule PrimeTablesTest do
 |   19 |   38 |   57 |   95 |  133 |  209 |  247 |  323 |  361 |
  """
 
-    {:ok, num} = PrimeTables.get_number("test/valid_number.txt") 
-    assert expected == PrimeTables.get_table(num)
+    assert expected == PrimeTables.generate_table("test/valid_number.txt")
   end
 
 end
