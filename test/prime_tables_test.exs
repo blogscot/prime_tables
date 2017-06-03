@@ -22,7 +22,7 @@ defmodule PrimeTablesTest do
     assert PrimeTables.is_prime?(23)
   end
 
-  test "find prime numbers up to the given value" do
+  test "find n prime numbers" do
     assert PrimeTables.get_primes(4) == [2, 3, 5, 7]
     assert PrimeTables.get_primes(10) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
   end
@@ -59,7 +59,7 @@ defmodule PrimeTablesTest do
     assert expected == PrimeTables.get_table(4)
   end
 
-  test "when a user supplies a valid filename contain good data" do
+  test "when a user supplies a valid filename containing good data" do
 
     expected = """
 |      |    2 |    3 |    5 |    7 |   11 |   13 |   17 |   19 |

@@ -53,12 +53,11 @@ defmodule PrimeTables do
   end
 
   @doc """
-  Returns a list of primes up to the given value.
+  Returns a list of num primes.
 
   iex(1)> PrimeTables.get_primes(15)
   [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
   """
-
   def get_primes(num) when is_integer(num) do
     Stream.iterate(1, &(&1 + 1))
     |> Stream.filter(&PrimeTables.is_prime?/1)

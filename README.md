@@ -2,8 +2,8 @@
 
 ## Description
 
-The Prime Tables application, written in Elixir, generates a table of primes,
-for example, a table of three primes generates
+The Prime Tables application, written in Elixir, generates a multiplication
+table for prime numbers. For example, a table of three primes generates:
 
     |      |    2 |    3 |    5 |
     |    2 |    4 |    6 |   10 |
@@ -13,7 +13,7 @@ for example, a table of three primes generates
 
 Input is taken from the user via a text file containing a single integer value.
 For example, the text for the table above is generated using the following
-command where the user_filename contains '3':
+command where the user supplied file contains '3':
 
 ```
 PrimeTables.generate_table(user_filename.txt)
