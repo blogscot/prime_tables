@@ -59,7 +59,7 @@ defmodule PrimeTablesTest do
     assert expected == PrimeTables.get_table(4)
   end
 
-  test "from file input to text output" do
+  test "when a user supplies a valid filename contain good data" do
 
     expected = """
 |      |    2 |    3 |    5 |    7 |   11 |   13 |   17 |   19 |
@@ -76,4 +76,13 @@ defmodule PrimeTablesTest do
     assert expected == PrimeTables.generate_table("test/valid_number.txt")
   end
 
+  test "when user supplies an invalid filename" do
+    expected = "Error: file not found."
+    assert expected == PrimeTables.generate_table("missing_file.txt")
+  end
+
+  test "when user supplies a valid filename with bad data" do
+    expected = "Error: invalid input."
+    assert expected == PrimeTables.generate_table("test/invalid_number.txt")
+  end
 end
