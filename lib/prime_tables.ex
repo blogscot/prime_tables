@@ -9,14 +9,14 @@ defmodule PrimeTables do
   def get_number(filename) do
     case File.read(filename) do
       {:ok, text} -> parse_number(String.trim(text))
-      {:error, _} -> "Error: file not found."
+      {:error, _} -> {:error, "Error: file not found."}
     end
   end
 
   def parse_number(text) do
     case Integer.parse(text) do
-      {value, _} -> value
-      :error -> "Error: invalid input." 
+      {value, _} -> {:ok, value}
+      :error -> {:error, "Error: invalid input."}
     end
   end
 
