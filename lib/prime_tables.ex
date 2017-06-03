@@ -33,7 +33,7 @@ defmodule PrimeTables do
   """
   def is_prime?(num) when is_integer(num) and num < 2, do: false
   def is_prime?(num) when is_integer(num) and num == 2 or num == 3, do: true
-  def is_prime?(num) when rem(num, 2) == 0, do: false
+  def is_prime?(num) when is_integer(num) and rem(num, 2) == 0, do: false
   def is_prime?(num) when is_integer(num) do
     3..(:math.sqrt(num) |> trunc)
     |> Enum.map(fn x -> rem(num, x) == 0 end)
