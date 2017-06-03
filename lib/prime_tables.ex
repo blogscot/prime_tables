@@ -50,4 +50,40 @@ defmodule PrimeTables do
   def find_primes(num) when is_integer(num) do
     2..num |> Enum.filter(&PrimeTables.is_prime?/1)
   end
+
+  @doc """
+  Calculates the rows for the prime table.
+
+  iex(1)> PrimeTables.calculate_rows [2, 3, 5]
+  [[2, 4, 6, 10], [3, 6, 9, 15], [5, 10, 15, 25]]
+  """
+  def calculate_rows(primes) do
+    data = (for x <- primes, y <- primes, do: x * y)
+    |> Enum.chunk(length(primes))
+
+    Enum.zip(primes, data)
+    |> Enum.map(fn {p, data} -> List.insert_at(data, 0, p) end)
+  end
+
+
+  def get_table(num, padding \\ 5) when is_integer(num) do
+    primes = num |> find_primes
+    rows = primes |> calculate_rows
+
+    # construct first row
+    IO.write "|" <> String.pad_leading("", padding + 1)
+    for p <- primes do
+      IO.write("|" <> String.pad_leading(p |> Integer.to_string, padding) <> " ")
+    end
+    IO.puts "|"
+
+    for row <- rows do
+      for r <- row do
+        IO.write("|" <> String.pad_leading(Integer.to_string(r), padding) <> " ")
+      end
+      IO.puts "|"
+    end
+
+  end
+
 end
