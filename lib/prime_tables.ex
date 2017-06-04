@@ -48,12 +48,9 @@ defmodule PrimeTables do
   def is_prime?(num) when is_integer(num) and rem(num, 2) == 0, do: false
   def is_prime?(num) when is_integer(num) do
     3..(:math.sqrt(num) |> trunc)
-    |> Enum.filter(&is_odd?/1)
     |> Enum.map(fn x -> rem(num, x) == 0 end)
     |> Enum.all?(&(&1 == false))
   end
-
-  defp is_odd?(num) when is_integer(num), do: rem(num, 2) != 0
 
   @doc """
   Returns a list of num primes.
